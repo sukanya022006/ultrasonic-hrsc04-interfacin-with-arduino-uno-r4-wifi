@@ -3,10 +3,23 @@
 #define echoPin 10
 void setup() {
 // write your initialization code here
+    Serial.begin(9600);
     pinMode(trigPin, OUTPUT);
     pinMode(echoPin, INPUT);
 }
 
 void loop() {
 // write your code here
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    long duration = pulseIn(echoPin, HIGH);
+    long distance = duration * 0.034 / 2;
+    Serial.println("distance:");
+    Serial.println(distance);
+    Serial.println("cm");
+    delay(1000);
+
 }
